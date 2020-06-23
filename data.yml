@@ -1,11 +1,4 @@
 ---
-players:
-  accountId: Integer x4
-    :nick:   String
-    :seat:   Integer (0-3)
-    :rank:   Integer (1-4)
-    :score:  Integer
-
 round:
   :meta:
     :prevailing: Integer (0-3, E-N)
@@ -28,3 +21,5 @@ operations:
     - String
 
 tile: String ("7s")
+
+seat: Integer (0-3), Pbot's seat ID
