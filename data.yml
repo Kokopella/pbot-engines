@@ -1,16 +1,21 @@
 ---
+seat: Integer (0-3), Pbot's seat ID
+
 round:
   :meta:
     :prevailing: Integer (0-3, E-N)
     :mywind:     Integer (0-3, E-N)
     :round:      Integer
     :honba:      Integer
+    :remaining:  Integer
     :dora:       String ("2m5p0s3z")
     :dead:       Int Array
   seat:          Integer (0-3) x4
     :hand:       String, only for Pbot's seat
     :riichi:     true or nil
     :pond:       String ("2m5p0s3z")
+
+tile: String ("7s")
 
 operations:
   type:  Integer
@@ -20,6 +25,3 @@ operations:
   type:  Integer
     - String
 
-tile: String ("7s")
-
-seat: Integer (0-3), Pbot's seat ID
