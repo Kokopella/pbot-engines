@@ -26,7 +26,7 @@
   * The name of the tile to discard, in case of a discard. E.g. "2s"
 4. Moqie (int)
   * Needs to be 1 if the discarded tile is the drawn tile, 0 otherwise
-  * isMoqie(discard) will handle this for you usually
+  * `moqie = isMoqie(discard)` will handle this for you usually
 
 ### Special Cases
   * When tsumo (type 8), set index and discard to `nil` and moqie to 1
@@ -55,10 +55,41 @@
 }
 ```
 
-* When a tile is dealt, the operations hash will always contain at least {1=>""}, unless you are in riichi
+* When a tile is dealt, the operations hash will always contain at least `{1=>""}`, unless you are in riichi
   * When in riichi, the game doesn't actually expect you to respond with anything, so makeDealDecision is not called
-* If there is no possible call to make during another player's discard, makeDiscardDecision is not called (the data in @round is still updated)
+* If there is no possible call to make during another player's discard, makeDiscardDecision is not called (the data in `@round` is still updated)
 * Types 1, 8, and 9 (Discard, Tsumo, and Ron) will have a value of an empty string, but you don't need this for anything. Refer to the special cases notes above.
+
+## Round instance variable example
+
+Example of the @round instance variable in the middle of a sample game
+
+```ruby
+{
+  :meta => {
+    :dead => [0, 2, 1, 0, 0, 1, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 0, 0, 0, 0, 0, 1, 3, 2, 2, 1, 2, 1, 1],
+    :prevailing => 0,
+    :round => 2,
+    :mywind => 2,
+    :honba => 0,
+    :remaining => 49
+  },
+  0 => {
+    :pond => "4z1z1m2z1m", 
+    :hand => "6m7m2p4p4p8p2s6s6s8s4m5m0p"
+  }, 
+  1 => {
+    :pond => "2z3z2s5z1s"
+  }, 
+  2 => {
+    :pond => "3z6z7z2m5m1z"
+  }, 
+  3 => {
+    :pond => "5z8m1s6m8s9s", 
+    :riichi => true
+  }
+}
+```
 
 ## Other notes
 
