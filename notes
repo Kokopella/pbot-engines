@@ -1,0 +1,15 @@
+# Call types
+{
+  0 => "nothing",
+  1 => "discard",
+  2 => "chi",
+  3 => "pon",
+  4 => "closed kan",
+  5 => "open kan",
+  6 => "add kan",
+  7 => "riichi",
+  8 => "tsumo",
+  9 => "ron",
+  10 => "kyuushukyuuhai",
+  11 => "declared yakuman"
+}
