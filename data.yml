@@ -12,6 +12,7 @@ round:
     :dead:       Int Array
   seat:          Integer (0-3) x4
     :hand:       String, only for Pbot's seat
+    :called:     Array (["3p3p3p", "7m8m9m"])
     :riichi:     true or nil
     :pond:       String ("2m5p0s3z")
 
