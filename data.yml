@@ -8,7 +8,7 @@ round:
     :round:      Integer
     :honba:      Integer
     :remaining:  Integer
-    :dora:       String ("2m5p0s3z")
+    :doras:      String ("2m5p0s3z")
     :dead:       Int Array
   seat:          Integer (0-3) x4
     :hand:       String, only for Pbot's seat

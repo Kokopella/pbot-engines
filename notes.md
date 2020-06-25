@@ -80,6 +80,7 @@
          :round => 0,
         :mywind => 3,
          :honba => 1,
+         :doras => "8s",
      :remaining => 28
   },
       0 => {
