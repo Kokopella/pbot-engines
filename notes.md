@@ -29,6 +29,7 @@
   * `moqie = isMoqie(discard)` will handle this for you usually
 
 ### Special Cases
+  * When discarding, set `discard` to the tile you want to discard and index to `nil`. If you're discarding your drawn tile, set moqie to `1`
   * When tsumo (type 8), set index and discard to `nil` and moqie to 1
   * When riichi (type 7), your possible discards are in the associated array in the operations hash. Set the index value and the discard appropriately (e.g. `discard = operations[type][index]`)
 
@@ -55,7 +56,7 @@
 }
 ```
 
-* When a tile is dealt, the operations hash will always contain at least `{1=>""}`, unless you are in riichi
+* When a tile is dealt to you, the operations hash will always contain at least `{1=>""}`, unless you are in riichi
   * When in riichi, the game doesn't actually expect you to respond with anything, so makeDealDecision is not called
 * If there is no possible call to make during another player's discard, makeDiscardDecision is not called (the data in `@round` is still updated)
 * Types 1, 8, and 9 (Discard, Tsumo, and Ron) will have a value of an empty string, but you don't need this for anything. Refer to the special cases notes above.
@@ -96,6 +97,6 @@ Example of the @round instance variable in the middle of a sample game
 * The game uses strings to represent tiles, so things like the bot's hand, dora indicators, etc. are all strings of tiles like "2m7p6s2z3m5m4z8p8p".
 * The `@round` instance variable (see data.yml) is reinitialized at the start of every new round. It's fully readable and writeable from the Module, so feel free to add stuff to it
 * `@round` and `@seat` are instance variables, so the @ symbol needs to be used when calling them. 'operations' and 'tile' are just local variables to the functions they're passed to.
-* I used symbols for most of the operations hash keys. Basically, if it starts with a :, make sure that's included when calling the data (e.g. `@rounds[:meta][:prevailing]`)
-* The `@round` instance variable has an array at `@round[:meta][:dead]` that tracks the number of discarded tiles of each type that can be known to a player (discarded tiles, dora indicators). The first element of this array is the number of "1m" tiles not in play; the 33rd element is the number of "7z" tiles not in play
+* I used symbols for most of the operations hash keys. Basically, if it starts with a `:` make sure that's included when calling the data (e.g. `@rounds[:meta][:prevailing]`)
+* The `@round` instance variable has an array at `@round[:meta][:dead]` that tracks the number of discarded tiles of each type that can be known to a player (discarded tiles, dora indicators). The first element of this array is the number of "1m" tiles not in play; the 34th element is the number of "7z" tiles not in play
 * tamixe a shit :put_litter_in_its_place:

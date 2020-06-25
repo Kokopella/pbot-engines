@@ -14,10 +14,16 @@ module Tsumokiri
     # Tsumo
     if keys.include?(8)
       # Do tsumo things
+      type = 8
+      discard = nil
+      index = nil
 
     # Riichi
     elsif keys.include?(7)
       # Do riichi things
+      type = 7
+      index = 0
+      discard = operations[type][index]
 
     # Discard
     else
@@ -42,6 +48,9 @@ module Tsumokiri
     cancelOp = 1
 
     if keys.include?(9)
+      type = 9
+      index = 0
+      cancelOp = nil
       # Do Ron things
 
     else
