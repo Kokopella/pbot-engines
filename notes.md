@@ -61,37 +61,6 @@
 * If there is no possible call to make during another player's discard, makeDiscardDecision is not called (the data in `@round` is still updated)
 * Types 1, 8, and 9 (Discard, Tsumo, and Ron) will have a value of an empty string, but you don't need this for anything. Refer to the special cases notes above.
 
-## Round instance variable example
-
-Example of the @round instance variable in the middle of a sample game
-
-```ruby
-{
-  :meta => {
-    :dead => [0, 2, 1, 0, 0, 1, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 0, 0, 0, 0, 0, 1, 3, 2, 2, 1, 2, 1, 1],
-    :prevailing => 0,
-    :round => 2,
-    :mywind => 2,
-    :honba => 0,
-    :remaining => 49
-  },
-  0 => {
-    :pond => "4z1z1m2z1m", 
-    :hand => "6m7m2p4p4p8p2s6s6s8s4m5m0p"
-  }, 
-  1 => {
-    :pond => "2z3z2s5z1s"
-  }, 
-  2 => {
-    :pond => "3z6z7z2m5m1z"
-  }, 
-  3 => {
-    :pond => "5z8m1s6m8s9s", 
-    :riichi => true
-  }
-}
-```
-
 ## Other notes
 
 * The game uses strings to represent tiles, so things like the bot's hand, dora indicators, etc. are all strings of tiles like "2m7p6s2z3m5m4z8p8p".
@@ -100,3 +69,41 @@ Example of the @round instance variable in the middle of a sample game
 * I used symbols for most of the operations hash keys. Basically, if it starts with a `:` make sure that's included when calling the data (e.g. `@rounds[:meta][:prevailing]`)
 * The `@round` instance variable has an array at `@round[:meta][:dead]` that tracks the number of discarded tiles of each type that can be known to a player (discarded tiles, dora indicators). The first element of this array is the number of "1m" tiles not in play; the 34th element is the number of "7z" tiles not in play
 * tamixe a shit :put_litter_in_its_place:
+
+## Example of @round instance variable contents mid-game
+
+```ruby
+{
+  :meta => {
+          :dead => [ 0, 0, 3, 0, 0, 1, 1, 2, 1, 2, 2, 1, 0, 1, 1, 2, 1, 1, 3, 0, 0, 0, 1, 0, 1, 1, 1, 3, 1, 2, 3, 3, 2, 4 ],
+    :prevailing => 1,
+         :round => 0,
+        :mywind => 3,
+         :honba => 1,
+     :remaining => 28
+  },
+      0 => {
+      :pond => "2z6s4z3z4z5z7z3z9p6p8p",
+    :called => [
+      "7s9s8s",
+      "8m9m7m"
+    ]
+  },
+      1 => {
+      :pond => "2m6m7z5z1z7z7z2p7p2m4p",
+    :called => [],
+    :riichi => true
+  },
+      2 => {
+      :pond => "9p4z9m5z1p1p1z6z5p8m9p",
+    :called => [
+      "8p8p8p"
+    ]
+  },
+      3 => {
+      :pond => "4s9s7s2m7m8s6z7m9m5m",
+    :called => [],
+      :hand => "4m2p3p5p5p6p8p5m3p7p1p0p6p"
+  }
+}
+```
