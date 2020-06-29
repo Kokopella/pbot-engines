@@ -25,7 +25,7 @@
 }
 ```
 
-* When a tile is dealt to you, the operations hash will always contain at least `{1=>""}`, unless you are in riichi
+* When a tile is dealt to you, the operations hash will always contain at least `{1=>[]}`, unless you are in riichi
   * When in riichi, the game doesn't actually expect you to respond with anything, so makeDealDecision is not called
 * If there is no possible call to make during another player's discard, makeDiscardDecision is not called (the data in `@round` is still updated)
 * Types 1, 8, and 9 (Discard, Tsumo, and Ron) will have an empty array because there are no other tiles to act on
